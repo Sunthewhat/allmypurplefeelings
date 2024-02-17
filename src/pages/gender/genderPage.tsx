@@ -1,5 +1,6 @@
-import { Box, Button, Input, Text } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
+import { UserContext } from '@/layout/rootLayout';
+import { Box, Button, Text } from '@chakra-ui/react';
+import { FC, useContext, useEffect, useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,10 +8,11 @@ const GenderPage: FC = () => {
 	const windowH = window.innerHeight;
 	const windowW = window.innerWidth;
 	const navigate = useNavigate();
+	const { setUser } = useContext(UserContext);
 	const [isShowInput, setIsShowInput] = useState(false);
-	const [name, setName] = useState('');
 	const [isShowComponent, setIsShowComponent] = useState(false);
 	const [isGoingToNextPage, setIsGoingToNextPage] = useState(false);
+	const [gender, setGender] = useState<string>('');
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -27,12 +29,14 @@ const GenderPage: FC = () => {
 	});
 
 	const handleNextPage = () => {
-		if (name === '') {
-			return;
-		}
+		if (gender === '') return;
+
+		setUser((prev) => {
+			return { ...prev, gender };
+		});
 		setIsGoingToNextPage(true);
 		setTimeout(() => {
-			navigate('/gender');
+			navigate('/age');
 		}, 2000);
 	};
 
@@ -48,9 +52,9 @@ const GenderPage: FC = () => {
 		>
 			<Box
 				transition='opacity 2s ease'
-				opacity={isShowInput ? 1 : 0}
+				opacity={isShowInput && gender === '' ? 1 : 0}
 				pos='absolute'
-				bg={'radial-gradient(circle, #C88FDA 0%, #00000000 40%)'}
+				bg={'radial-gradient(circle, #7A4E6A 0%, #00000000 40%)'}
 				left='2.5dvw'
 				top={`${windowH / 2 - windowW * 0.475}px`}
 				w='95dvw'
@@ -61,7 +65,18 @@ const GenderPage: FC = () => {
 				transition='opacity 2s ease'
 				opacity={isShowInput ? 0 : 1}
 				pos='absolute'
-				bg={'radial-gradient(circle, #7A4E6A 0%, #00000000 40%)'}
+				bg={'radial-gradient(circle, #5A3F76 0%, #00000000 40%)'}
+				left='2.5dvw'
+				top={`${windowH / 2 - windowW * 0.475}px`}
+				w='95dvw'
+				h='95dvw'
+				borderRadius='full'
+			/>
+			<Box
+				transition='opacity 2s ease'
+				opacity={gender === '' ? 0 : 1}
+				pos='absolute'
+				bg={'radial-gradient(circle, #953E95 0%, #00000000 40%)'}
 				left='2.5dvw'
 				top={`${windowH / 2 - windowW * 0.475}px`}
 				w='95dvw'
@@ -87,41 +102,127 @@ const GenderPage: FC = () => {
 				What is <br />
 				your gender ?
 			</Text>
-			<Box pos={'absolute'} display={'flex'} flexDir={'column'}>
-				<Button></Button>
-				<Button></Button>
-				<Button></Button>
-				<Button></Button>
-			</Box>
-			<Input
+			<Box
 				pos={'absolute'}
-				top={windowH * 0.51}
-				w={'60dvw'}
-				h={'4dvh'}
-				border={'2px solid #FFFFFF90'}
-				bg={'#FFFFFF50'}
-				color={'#612D90'}
-				borderRadius={'full'}
-				placeholder='How can we call you ?'
-				fontFamily={'atoms_hwEN'}
-				textAlign={'center'}
-				fontSize={'1rem'}
+				display={'flex'}
+				flexDir={'column'}
+				alignItems={'center'}
+				top={windowH * 0.45}
+				w={'100dvw'}
 				opacity={isShowInput ? 1 : 0}
-				transition={'opacity 2s ease'}
-				css={{
-					'&::placeholder': {
-						color: 'white',
-						opacity: 1,
-					},
-				}}
-				value={name}
-				onChange={(e) => setName(e.target.value)}
-			/>
+				transition={'opacity 1s ease'}
+			>
+				{isShowInput && (
+					<Button
+						w={'50%'}
+						borderRadius={'full'}
+						backgroundColor={
+							gender === 'Male'
+								? '#FFFFFF00 !important'
+								: '#FFFFFF80 !important'
+						}
+						border={
+							gender === 'Male'
+								? '2px solid #612D90'
+								: '2px solid #FFFFFF90'
+						}
+						color={gender === 'Male' ? '#612D90' : 'white'}
+						fontFamily={'atoms_hwEN'}
+						fontSize={'1.2rem'}
+						onClick={() => {
+							setGender('Male');
+						}}
+						transition={
+							'background-color 0.5s ease, border 0.5s ease, color 0.5s ease'
+						}
+					>
+						Male
+					</Button>
+				)}
+				<Button
+					mt={'1.6dvh'}
+					w={'50%'}
+					borderRadius={'full'}
+					backgroundColor={
+						gender === 'Female'
+							? '#FFFFFF00 !important'
+							: '#FFFFFF80 !important'
+					}
+					border={
+						gender === 'Female'
+							? '2px solid #612D90'
+							: '2px solid #FFFFFF90'
+					}
+					color={gender === 'Female' ? '#612D90' : 'white'}
+					fontFamily={'atoms_hwEN'}
+					fontSize={'1.2rem'}
+					onClick={() => {
+						setGender('Female');
+					}}
+					transition={
+						'background-color 0.5s ease, border 0.5s ease, color 0.5s ease'
+					}
+				>
+					Female
+				</Button>
+				<Button
+					mt={'1.6dvh'}
+					w={'50%'}
+					borderRadius={'full'}
+					backgroundColor={
+						gender === 'Others'
+							? '#FFFFFF00 !important'
+							: '#FFFFFF80 !important'
+					}
+					border={
+						gender === 'Others'
+							? '2px solid #612D90'
+							: '2px solid #FFFFFF90'
+					}
+					color={gender === 'Others' ? '#612D90' : 'white'}
+					fontFamily={'atoms_hwEN'}
+					fontSize={'1.2rem'}
+					onClick={() => {
+						setGender('Others');
+					}}
+					transition={
+						'background-color 0.5s ease, border 0.5s ease, color 0.5s ease'
+					}
+				>
+					Others
+				</Button>
+				<Button
+					mt={'1.6dvh'}
+					w={'50%'}
+					borderRadius={'full'}
+					backgroundColor={
+						gender === 'None'
+							? '#FFFFFF00 !important'
+							: '#FFFFFF80 !important'
+					}
+					border={
+						gender === 'None'
+							? '2px solid #612D90'
+							: '2px solid #FFFFFF90'
+					}
+					color={gender === 'None' ? '#612D90' : 'white'}
+					fontFamily={'atoms_hwEN'}
+					fontSize={'1.2rem'}
+					onClick={() => {
+						setGender('None');
+					}}
+					transition={
+						'background-color 0.5s ease, border 0.5s ease, color 0.5s ease'
+					}
+				>
+					Prefer not to say
+				</Button>
+			</Box>
 			<Box
 				h={'5dvh'}
 				pos={'absolute'}
-				top={windowH * 0.6}
-				opacity={name === '' ? 0 : 1}
+				top={windowH * 0.8}
+				opacity={gender === '' ? 0 : 1}
 				transition={'opacity 1s ease'}
 				color='#FFFFFF90'
 				onClick={handleNextPage}

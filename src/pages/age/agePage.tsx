@@ -4,15 +4,15 @@ import { FC, useContext, useEffect, useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const NamePage: FC = () => {
+const AgePage: FC = () => {
 	const windowH = window.innerHeight;
 	const windowW = window.innerWidth;
 	const navigate = useNavigate();
+	const { setUser } = useContext(UserContext);
 	const [isShowInput, setIsShowInput] = useState(false);
-	const [name, setName] = useState<string>('');
 	const [isShowComponent, setIsShowComponent] = useState(false);
 	const [isGoingToNextPage, setIsGoingToNextPage] = useState(false);
-	const { setUser } = useContext(UserContext);
+	const [age, setAge] = useState<string>('');
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -29,15 +29,14 @@ const NamePage: FC = () => {
 	});
 
 	const handleNextPage = () => {
-		if (name === '') {
-			return;
-		}
+		if (age === '') return;
+
 		setUser((prev) => {
-			return { ...prev, name };
+			return { ...prev, age: parseInt(age) };
 		});
 		setIsGoingToNextPage(true);
 		setTimeout(() => {
-			navigate('/gender');
+			navigate('/shades');
 		}, 2000);
 	};
 
@@ -53,9 +52,9 @@ const NamePage: FC = () => {
 		>
 			<Box
 				transition='opacity 2s ease'
-				opacity={isShowInput ? 1 : 0}
+				opacity={isShowInput ? 0 : 1}
 				pos='absolute'
-				bg={'radial-gradient(circle, #C88FDA 0%, #00000000 40%)'}
+				bg={'radial-gradient(circle, #5A3F76 0%, #00000000 40%)'}
 				left='2.5dvw'
 				top={`${windowH / 2 - windowW * 0.475}px`}
 				w='95dvw'
@@ -64,9 +63,20 @@ const NamePage: FC = () => {
 			/>
 			<Box
 				transition='opacity 2s ease'
-				opacity={isShowInput ? 0 : 1}
+				opacity={isShowInput && age === '' ? 1 : 0}
 				pos='absolute'
-				bg={'radial-gradient(circle, #7A4E6A 0%, #00000000 40%)'}
+				bg={'radial-gradient(circle, #A55078 0%, #00000000 40%)'}
+				left='2.5dvw'
+				top={`${windowH / 2 - windowW * 0.475}px`}
+				w='95dvw'
+				h='95dvw'
+				borderRadius='full'
+			/>
+			<Box
+				transition='opacity 2s ease'
+				opacity={age !== '' ? 1 : 0}
+				pos='absolute'
+				bg={'radial-gradient(circle, #C88FDA 0%, #00000000 40%)'}
 				left='2.5dvw'
 				top={`${windowH / 2 - windowW * 0.475}px`}
 				w='95dvw'
@@ -78,8 +88,8 @@ const NamePage: FC = () => {
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.13
-						: windowH / 2 - windowH * 0.06
+						? windowH / 2 - windowH * 0.1
+						: windowH / 2 - windowH * 0.05
 				}
 				fontFamily={'atoms_hwEN'}
 				color={'white'}
@@ -89,8 +99,7 @@ const NamePage: FC = () => {
 				textAlign={'center'}
 				transition={'top 1s ease'}
 			>
-				What is <br />
-				your name ?
+				How old are you ?
 			</Text>
 			<Input
 				pos={'absolute'}
@@ -101,7 +110,7 @@ const NamePage: FC = () => {
 				bg={'#FFFFFF50'}
 				color={'#612D90'}
 				borderRadius={'full'}
-				placeholder='How can we call you ?'
+				placeholder='Type your age'
 				fontFamily={'atoms_hwEN'}
 				textAlign={'center'}
 				fontSize={'1rem'}
@@ -113,14 +122,15 @@ const NamePage: FC = () => {
 						opacity: 1,
 					},
 				}}
-				value={name}
-				onChange={(e) => setName(e.target.value)}
+				value={age}
+				type='number'
+				onChange={(e) => setAge(e.target.value)}
 			/>
 			<Box
 				h={'5dvh'}
 				pos={'absolute'}
 				top={windowH * 0.8}
-				opacity={name === '' ? 0 : 1}
+				opacity={age === '' ? 0 : 1}
 				transition={'opacity 1s ease'}
 				color='#FFFFFF90'
 				onClick={handleNextPage}
@@ -131,4 +141,4 @@ const NamePage: FC = () => {
 	);
 };
 
-export default NamePage;
+export default AgePage;
