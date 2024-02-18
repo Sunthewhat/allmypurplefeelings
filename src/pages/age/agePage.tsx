@@ -1,12 +1,11 @@
 import { UserContext } from '@/layout/rootLayout';
+import { PageProps } from '@/routes';
 import { Box, Input, Text } from '@chakra-ui/react';
 import { FC, useContext, useEffect, useState } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const AgePage: FC = () => {
-	const windowH = window.innerHeight;
-	const windowW = window.innerWidth;
+const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 	const navigate = useNavigate();
 	const { setUser } = useContext(UserContext);
 	const [isShowInput, setIsShowInput] = useState(false);

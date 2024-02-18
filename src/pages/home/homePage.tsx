@@ -4,10 +4,10 @@ import landokmai from '@/assets/landokmai.svg';
 import puppet from '@/assets/puppet.svg';
 import ghosts from '@/assets/ghost.svg';
 import { useNavigate } from 'react-router-dom';
+import { PageProps } from '@/routes';
 
-const HomePage: FC = () => {
+const HomePage: FC<PageProps> = ({ windowH }) => {
 	const navigate = useNavigate();
-	const windowH = window.innerHeight;
 	const [moveUp, setMoveUp] = useState(false);
 	const [isShowPuppet, setIsShowPuppet] = useState(false);
 	const [isShowGhosts, setIsShowGhosts] = useState(false);
@@ -61,8 +61,9 @@ const HomePage: FC = () => {
 			height={'100dvh'}
 			w={'100dvw'}
 			position={'fixed'}
-			top={isGoingToNextPage ? '-100%' : 0}
-			transition={'top 2s ease'}
+			top={0}
+			opacity={isGoingToNextPage ? 0 : 1}
+			transition={'opacity 2s ease'}
 		>
 			<Image
 				objectFit={'contain'}

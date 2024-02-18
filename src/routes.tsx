@@ -6,16 +6,39 @@ import GenderPage from './pages/gender/genderPage';
 import AgePage from './pages/age/agePage';
 import ShadePage from './pages/shades/shadePage';
 
+export type PageProps = {
+	windowH: number;
+	windowW: number;
+};
+
+const windowH = window.innerHeight;
+const windowW = window.innerWidth;
+
 export const Routes = createBrowserRouter([
 	{
 		path: '/',
 		element: <RootLayout />,
 		children: [
-			{ path: '/', element: <HomePage /> },
-			{ path: '/name', element: <NamePage /> },
-			{ path: '/gender', element: <GenderPage /> },
-			{ path: '/age', element: <AgePage /> },
-			{path: '/shades', element: <ShadePage />},
+			{
+				path: '/',
+				element: <HomePage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/name',
+				element: <NamePage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/gender',
+				element: <GenderPage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/age',
+				element: <AgePage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/shades',
+				element: <ShadePage windowH={windowH} windowW={windowW} />,
+			},
 		],
 	},
 ]);
