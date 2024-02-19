@@ -77,7 +77,7 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.13
+						? windowH / 2 - windowH * 0.17
 						: windowH / 2 - windowH * 0.06
 				}
 				fontFamily={'atoms_hwEN'}
