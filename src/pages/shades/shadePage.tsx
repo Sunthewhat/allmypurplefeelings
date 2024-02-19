@@ -10,7 +10,14 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 	const [isShowLandokmai, setIsShowLandokmai] = useState(true);
 	const [isShowQuestion, setIsShowQuestion] = useState(false);
 	const [isShowToNextPage, setIsShowToNextPage] = useState(false);
-	const [isGoingToNextPage, setIsGoingToNextPage] = useState(false);
+	const [isGoingToNextPage, setIsGoingToNextPage] = useState(true);
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			setIsGoingToNextPage(false);
+		}, 100);
+		return () => clearTimeout(timeout);
+	}, []);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -39,7 +46,7 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 		}
 		setIsGoingToNextPage(true);
 		setTimeout(() => {
-			navigate('/name');
+			navigate('/question');
 		}, 2000);
 	};
 

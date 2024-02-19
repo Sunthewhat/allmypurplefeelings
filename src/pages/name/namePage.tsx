@@ -45,8 +45,8 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 			display={'flex'}
 			justifyContent={'center'}
 			pos={'fixed'}
-			w={'100dvw'}
-			h={'100dvh'}
+			w={windowW}
+			h={windowH}
 			transition={'opacity 2s ease'}
 			opacity={isShowComponent && !isGoingToNextPage ? 1 : 0}
 		>

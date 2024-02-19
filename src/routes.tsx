@@ -1,10 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
-import RootLayout from '@/layout/rootLayout';
+import { RootLayout } from '@/layout/rootLayout';
 import HomePage from './pages/home/homePage';
 import NamePage from './pages/name/namePage';
 import GenderPage from './pages/gender/genderPage';
 import AgePage from './pages/age/agePage';
 import ShadePage from './pages/shades/shadePage';
+import QuestionPage from './pages/question/questionPage';
 
 export type PageProps = {
 	windowH: number;
@@ -38,6 +39,10 @@ export const Routes = createBrowserRouter([
 			{
 				path: '/shades',
 				element: <ShadePage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/question',
+				element: <QuestionPage windowH={windowH} windowW={windowW} />,
 			},
 		],
 	},

@@ -7,6 +7,13 @@ export type UserType = {
 	name?: string;
 	gender?: string;
 	age?: number;
+	q1?: string;
+	q2?: string;
+	q3?: string;
+	q4?: string;
+	q5?: string;
+	q6?: string;
+	q7?: string;
 };
 
 export const UserContext = createContext<{
@@ -14,7 +21,7 @@ export const UserContext = createContext<{
 	setUser: Dispatch<SetStateAction<UserType>> | (() => void);
 }>({ user: {}, setUser: () => {} });
 
-const RootLayout = () => {
+export const RootLayout = () => {
 	const [user, setUser] = useState<UserType>({});
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
@@ -34,5 +41,3 @@ const RootLayout = () => {
 		</UserContext.Provider>
 	);
 };
-
-export default RootLayout;

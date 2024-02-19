@@ -6,7 +6,7 @@ import ghosts from '@/assets/ghost.svg';
 import { useNavigate } from 'react-router-dom';
 import { PageProps } from '@/routes';
 
-const HomePage: FC<PageProps> = ({ windowH }) => {
+const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 	const navigate = useNavigate();
 	const [moveUp, setMoveUp] = useState(false);
 	const [isShowPuppet, setIsShowPuppet] = useState(false);
@@ -58,8 +58,8 @@ const HomePage: FC<PageProps> = ({ windowH }) => {
 			display={'flex'}
 			justifyContent={'center'}
 			alignItems={'center'}
-			height={'100dvh'}
-			w={'100dvw'}
+			height={windowH}
+			w={windowW}
 			position={'fixed'}
 			top={0}
 			opacity={isGoingToNextPage ? 0 : 1}
