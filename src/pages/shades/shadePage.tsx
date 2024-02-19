@@ -3,10 +3,14 @@ import { Box, Image, Text } from '@chakra-ui/react';
 import { FC, useEffect, useState } from 'react';
 import puppet from '@/assets/puppet.svg';
 import ghosts from '@/assets/ghost.svg';
+import { useNavigate } from 'react-router-dom';
 
 const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
+	const navigate = useNavigate();
 	const [isShowLandokmai, setIsShowLandokmai] = useState(true);
 	const [isShowQuestion, setIsShowQuestion] = useState(false);
+	const [isShowToNextPage, setIsShowToNextPage] = useState(false);
+	const [isGoingToNextPage, setIsGoingToNextPage] = useState(false);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -22,8 +26,28 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 		return () => clearTimeout(timeout);
 	}, [isShowLandokmai]);
 
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			setIsShowToNextPage(true);
+		}, 5500);
+		return () => clearTimeout(timeout);
+	}, [isShowLandokmai]);
+
+	const handleNextPage = () => {
+		if (!isShowToNextPage) {
+			return;
+		}
+		setIsGoingToNextPage(true);
+		setTimeout(() => {
+			navigate('/name');
+		}, 2000);
+	};
+
 	return (
 		<Box
+			onClick={handleNextPage}
+			opacity={isGoingToNextPage ? 0 : 1}
+			transition={'opacity 2s ease'}
 			w={windowW}
 			h={windowH}
 			top={0}
@@ -70,12 +94,12 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 			<Box
 				pos={'absolute'}
 				top={'35%'}
-				w={windowW * 0.3}
+				w={windowW * 0.4}
 				h={windowH * 0.3}
 				display={'flex'}
 				justifyContent={'center'}
 				flexDir={'column'}
-				right={'18%'}
+				right={'10%'}
 				bg={'radial-gradient(circle, white -10%, #FFFFFF00 45%)'}
 				opacity={!isShowLandokmai && !isShowQuestion ? 1 : 0}
 				transition={'opacity 2s ease'}
@@ -95,12 +119,12 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 			<Box
 				pos={'absolute'}
 				top={'35%'}
-				w={windowW * 0.3}
+				w={windowW * 0.4}
 				h={windowH * 0.3}
 				display={'flex'}
 				justifyContent={'center'}
 				flexDir={'column'}
-				right={'18%'}
+				right={'10%'}
 				bg={'radial-gradient(circle, white -10%, #FFFFFF00 45%)'}
 				opacity={isShowQuestion ? 1 : 0}
 				transition={'opacity 4s ease'}
@@ -113,8 +137,7 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 					lineHeight={'1.6rem'}
 				>
 					"what shade
-					<br /> of purple <br /> are you?" <br />
-					story"
+					<br /> of purple <br /> are you?"
 				</Text>
 			</Box>
 			<Image
@@ -165,6 +188,19 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 					},
 				}}
 			/>
+			<Text
+				pos={'absolute'}
+				color={'white'}
+				fontFamily={'Alata'}
+				fontSize={'1.3rem'}
+				textAlign={'center'}
+				bottom={'8%'}
+				opacity={isShowToNextPage ? 0.5 : 0}
+				transition={'opacity 1s ease'}
+			>
+				Let's find
+				<br /> your shade!
+			</Text>
 		</Box>
 	);
 };
