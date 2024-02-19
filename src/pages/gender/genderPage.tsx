@@ -87,7 +87,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.18
+						? windowH / 2 - windowH * 0.2
 						: windowH / 2 - windowH * 0.06
 				}
 				fontFamily={'atoms_hwEN'}
