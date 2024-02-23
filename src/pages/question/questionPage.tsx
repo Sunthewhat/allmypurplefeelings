@@ -1,7 +1,7 @@
 import { PageProps } from '@/routes';
 import { Box, Button, Text } from '@chakra-ui/react';
 import { FC, useContext, useEffect, useState } from 'react';
-import { questions } from './data/question';
+import { calculateResult, questions, sendResult } from './data/question';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '@/layout/rootLayout';
 
@@ -10,7 +10,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 	const [isShowForm, setIsShowForm] = useState(false);
 	const [qIndex, setQIndex] = useState(1);
 	const navigate = useNavigate();
-	const { setUser } = useContext(UserContext);
+	const { user, setUser } = useContext(UserContext);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -35,7 +35,9 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 
 	const handleNextQuestion = () => {
 		if (qIndex === 7) {
-			navigate('/result');
+			const result = calculateResult(user);
+			sendResult(user, result);
+			navigate(`/result/${result.colorcode}`);
 		}
 		setQIndex(qIndex + 1);
 	};

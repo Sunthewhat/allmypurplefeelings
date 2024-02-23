@@ -41,7 +41,9 @@ export const RootLayout = () => {
 		<UserContext.Provider value={{ user, setUser }}>
 			<Box>
 				<Image
-					src={path === '/result' ? resultBackground : background}
+					src={
+						path.includes('/result') ? resultBackground : background
+					}
 					pos={'fixed'}
 					zIndex={-1}
 					loading='eager'

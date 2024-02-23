@@ -1,46 +1,21 @@
 import { PageProps } from '@/routes';
 import { Box, Button, Text } from '@chakra-ui/react';
-import { FC, useContext, useEffect, useState } from 'react';
-import { UserContext } from '@/layout/rootLayout';
-import { calculateResult } from '../question/data/question';
+import { FC, useEffect, useState } from 'react';
 import { FaSpotify, FaInstagram } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { results } from './data/result';
 
-const ResultPage: FC<PageProps> = ({ windowH, windowW }) => {
+const ResultPage: FC<PageProps> = () => {
+	const { colorcode } = useParams();
 	const [isShowComponent, setIsShowComponent] = useState(false);
-	const [isShowForm, setIsShowForm] = useState(false);
-	const { user } = useContext(UserContext);
-	const result = calculateResult(user);
-	const navigate = useNavigate();
+	const result = results.find((dat) => dat.colorcode === colorcode);
 
-	if (user.name === '' || user.gender === '' || user.age === 0) {
-		navigate('/');
-	}
-
-	if (
-		!user.q1 ||
-		!user.q2 ||
-		!user.q3 ||
-		!user.q4 ||
-		!user.q5 ||
-		!user.q6 ||
-		!user.q7
-	) {
-		navigate('/question');
-	}
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setIsShowComponent(true);
 		}, 100);
 		return () => clearTimeout(timeout);
 	}, []);
-
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setIsShowForm(true);
-		}, 2000);
-		return () => clearTimeout(timeout);
-	}, [isShowComponent]);
 
 	return (
 		<Box
@@ -49,6 +24,7 @@ const ResultPage: FC<PageProps> = ({ windowH, windowW }) => {
 			pos={'fixed'}
 			w={'100dvw'}
 			h={'100dvh'}
+			opacity={isShowComponent ? 1 : 0}
 			transition={'opacity 2s ease'}
 		>
 			<Box

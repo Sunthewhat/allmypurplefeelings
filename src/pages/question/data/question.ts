@@ -152,15 +152,16 @@ export const calculateResult = (user: UserType) => {
 		}
 		cnt++;
 	});
-	sendResult(user, results[max - 1]);
+	// sendResult(user, results[max - 1]);
 	return results[max - 1];
 };
 
-const sendResult = async (user: UserType, result: Result) => {
+export const sendResult = async (user: UserType, result: Result) => {
 	if (
 		user.name === undefined ||
 		user.age === undefined ||
-		user.gender === undefined
+		user.gender === undefined ||
+		user.q7 === undefined
 	) {
 		console.log('Incomplete Data');
 		return;

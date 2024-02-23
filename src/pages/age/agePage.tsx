@@ -2,6 +2,7 @@ import { UserContext } from '@/layout/rootLayout';
 import { PageProps } from '@/routes';
 import { Box, Input, Text } from '@chakra-ui/react';
 import { FC, useContext, useEffect, useState } from 'react';
+import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
@@ -99,43 +100,44 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 			>
 				How old are you ?
 			</Text>
-			<Input
-				pos={'absolute'}
-				top={windowH * 0.51}
-				w={'60dvw'}
-				h={'4dvh'}
-				border={'2px solid #FFFFFF90'}
-				bg={'#FFFFFF50'}
-				color={'#612D90'}
-				borderRadius={'full'}
-				placeholder='Type your age'
-				fontFamily={'jaifu'}
-				textAlign={'center'}
-				fontSize={'1rem'}
-				opacity={isShowInput ? 1 : 0}
-				transition={'opacity 2s ease'}
-				css={{
-					'&::placeholder': {
-						color: 'white',
-						opacity: 1,
-					},
-				}}
-				value={age}
-				type='number'
-				onChange={(e) => setAge(e.target.value)}
-			/>
-			<Box
-				h={'5dvh'}
-				pos={'absolute'}
-				top={windowH * 0.8}
-				opacity={age === '' ? 0 : 1}
-				transition={'opacity 1s ease'}
-				color='#FFFFFF90'
-				onClick={handleNextPage}
-				fontFamily={'alata'}
-				fontSize={'1.3rem'}
-			>
-				tap to continue
+			<Box pos={'absolute'} top={windowH * 0.51} w={'60dvw'} h={'4dvh'}>
+				<Input
+					border={'2px solid #FFFFFF90'}
+					bg={'#FFFFFF50'}
+					color={'#612D90'}
+					h={'4dvh'}
+					borderRadius={'full'}
+					placeholder='How can we call you ?'
+					fontFamily={'jaifu'}
+					textAlign={'center'}
+					fontSize={'1rem'}
+					opacity={isShowInput ? 1 : 0}
+					transition={'opacity 2s ease'}
+					css={{
+						'&::placeholder': {
+							color: 'white',
+							opacity: 1,
+						},
+					}}
+					value={age}
+					onChange={(e) => setAge(e.target.value)}
+				/>
+				<Box
+					pos={'absolute'}
+					top={0}
+					h={'100%'}
+					w={'10%'}
+					display={'flex'}
+					justifyContent={'flex-end'}
+					alignItems={'center'}
+					right={'1dvh'}
+					opacity={age !== '' ? 1 : 0}
+					transition={'opacity 2s ease'}
+					zIndex={1}
+					onClick={handleNextPage}
+				>
+					<FaCheckCircle size={'2dvh'} color='white' />
+				</Box>
 			</Box>
 		</Box>
 	);

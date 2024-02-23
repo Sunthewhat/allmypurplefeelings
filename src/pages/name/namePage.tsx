@@ -100,7 +100,7 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 					h={'4dvh'}
 					borderRadius={'full'}
 					placeholder='How can we call you ?'
-					fontFamily={'atoms_hwEN'}
+					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1rem'}
 					opacity={isShowInput ? 1 : 0}

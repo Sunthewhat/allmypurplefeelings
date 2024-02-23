@@ -46,7 +46,7 @@ export const Routes = createBrowserRouter([
 				element: <QuestionPage windowH={windowH} windowW={windowW} />,
 			},
 			{
-				path: '/result',
+				path: '/result/:colorcode',
 				element: <ResultPage windowH={windowH} windowW={windowW} />,
 			},
 		],
