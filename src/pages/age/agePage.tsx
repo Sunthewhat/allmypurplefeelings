@@ -100,32 +100,47 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 			>
 				How old are you ?
 			</Text>
-			<Input
-				pos={'absolute'}
-				top={windowH * 0.51}
-				w={'60dvw'}
-				h={'4dvh'}
-				border={'2px solid #FFFFFF90'}
-				bg={'#FFFFFF50'}
-				color={'#612D90'}
-				borderRadius={'full'}
-				placeholder='Type your age'
-				fontFamily={'atoms_hwEN'}
-				textAlign={'center'}
-				fontSize={'1rem'}
-				opacity={isShowInput ? 1 : 0}
-				transition={'opacity 2s ease'}
-				css={{
-					'&::placeholder': {
-						color: 'white',
-						opacity: 1,
-					},
-				}}
-				value={age}
-				type='number'
-				onChange={(e) => setAge(e.target.value)}
-			/>
-			<Box
+			<Box pos={'absolute'} top={windowH * 0.51} w={'60dvw'} h={'4dvh'}>
+				<Input
+					border={'2px solid #FFFFFF90'}
+					bg={'#FFFFFF50'}
+					h={'4dvh'}
+					color={'#612D90'}
+					borderRadius={'full'}
+					placeholder='Type your age'
+					fontFamily={'atoms_hwEN'}
+					textAlign={'center'}
+					fontSize={'1rem'}
+					opacity={isShowInput ? 1 : 0}
+					transition={'opacity 2s ease'}
+					css={{
+						'&::placeholder': {
+							color: 'white',
+							opacity: 1,
+						},
+					}}
+					value={age}
+					type='number'
+					onChange={(e) => setAge(e.target.value)}
+				/>
+				<Box
+					pos={'absolute'}
+					top={0}
+					h={'100%'}
+					w={'10%'}
+					display={'flex'}
+					justifyContent={'flex-end'}
+					alignItems={'center'}
+					right={'1dvh'}
+					opacity={age !== '' ? 1 : 0}
+					transition={'opacity 2s ease'}
+					zIndex={1}
+					onClick={handleNextPage}
+				>
+					<FaCheckCircle size={'2dvh'} color='white' />
+				</Box>
+			</Box>
+			{/* <Box
 				h={'5dvh'}
 				pos={'absolute'}
 				top={windowH * 0.8}
@@ -135,7 +150,7 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 				onClick={handleNextPage}
 			>
 				<FaCheckCircle size={'100%'} />
-			</Box>
+			</Box> */}
 		</Box>
 	);
 };
