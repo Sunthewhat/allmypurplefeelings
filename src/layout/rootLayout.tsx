@@ -1,7 +1,14 @@
 import { Box, Image } from '@chakra-ui/react';
 import background from '@/assets/background1.svg';
-import { Outlet } from 'react-router-dom';
-import { Dispatch, SetStateAction, createContext, useState } from 'react';
+import resultBackground from '@/assets/background2.svg';
+import { Outlet, useLocation } from 'react-router-dom';
+import {
+	Dispatch,
+	SetStateAction,
+	createContext,
+	useEffect,
+	useState,
+} from 'react';
 
 export type UserType = {
 	name?: string;
@@ -23,11 +30,18 @@ export const UserContext = createContext<{
 
 export const RootLayout = () => {
 	const [user, setUser] = useState<UserType>({});
+	const [path, setPath] = useState<string>('');
+	const location = useLocation();
+
+	useEffect(() => {
+		setPath(location.pathname);
+	}, [location]);
+
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
 			<Box>
 				<Image
-					src={background}
+					src={path === '/result' ? resultBackground : background}
 					pos={'fixed'}
 					zIndex={-1}
 					loading='eager'

@@ -73,27 +73,28 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 				borderRadius='full'
 			/>
 
-			<Text
+<Text
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.17
+						? windowH / 2 - windowH * 0.14
 						: windowH / 2 - windowH * 0.06
 				}
-				fontFamily={'atoms_hwEN'}
+				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
 				h={'50dvh'}
 				fontSize={'2rem'}
 				textAlign={'center'}
 				transition={'top 1s ease'}
+				lineHeight={'2rem'}
 			>
 				What is <br />
 				your name ?
 			</Text>
 			<Input
 				pos={'absolute'}
-				top={windowH * 0.51}
+				top={windowH * 0.5}
 				w={'60dvw'}
 				h={'4dvh'}
 				border={'2px solid #FFFFFF90'}
@@ -101,7 +102,7 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 				color={'#612D90'}
 				borderRadius={'full'}
 				placeholder='How can we call you ?'
-				fontFamily={'atoms_hwEN'}
+				fontFamily={'jaifu'}
 				textAlign={'center'}
 				fontSize={'1rem'}
 				opacity={isShowInput ? 1 : 0}
