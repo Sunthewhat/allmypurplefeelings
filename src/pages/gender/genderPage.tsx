@@ -2,7 +2,6 @@ import { UserContext } from '@/layout/rootLayout';
 import { PageProps } from '@/routes';
 import { Box, Button, Text } from '@chakra-ui/react';
 import { FC, useContext, useEffect, useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
@@ -87,16 +86,17 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.2
+						? windowH / 2 - windowH * 0.14
 						: windowH / 2 - windowH * 0.06
 				}
-				fontFamily={'atoms_hwEN'}
+				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
 				h={'50dvh'}
 				fontSize={'2rem'}
 				textAlign={'center'}
 				transition={'top 1s ease'}
+				lineHeight={'2rem'}
 			>
 				What is <br />
 				your gender ?
@@ -117,8 +117,8 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 						borderRadius={'full'}
 						backgroundColor={
 							gender === 'Male'
-								? '#FFFFFF00 !important'
-								: '#FFFFFF80 !important'
+								? '#9E88B450 !important'
+								: '#FFFFFF60 !important'
 						}
 						border={
 							gender === 'Male'
@@ -126,7 +126,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 								: '2px solid #FFFFFF90'
 						}
 						color={gender === 'Male' ? '#612D90' : 'white'}
-						fontFamily={'atoms_hwEN'}
+						fontFamily={'jaifu'}
 						fontSize={'1.2rem'}
 						onClick={() => {
 							setGender('Male');
@@ -144,8 +144,8 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 					borderRadius={'full'}
 					backgroundColor={
 						gender === 'Female'
-							? '#FFFFFF00 !important'
-							: '#FFFFFF80 !important'
+							? '#9E88B450 !important'
+							: '#FFFFFF60 !important'
 					}
 					border={
 						gender === 'Female'
@@ -153,7 +153,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 							: '2px solid #FFFFFF90'
 					}
 					color={gender === 'Female' ? '#612D90' : 'white'}
-					fontFamily={'atoms_hwEN'}
+					fontFamily={'jaifu'}
 					fontSize={'1.2rem'}
 					onClick={() => {
 						setGender('Female');
@@ -170,8 +170,8 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 					borderRadius={'full'}
 					backgroundColor={
 						gender === 'Others'
-							? '#FFFFFF00 !important'
-							: '#FFFFFF80 !important'
+							? '#9E88B450 !important'
+							: '#FFFFFF60 !important'
 					}
 					border={
 						gender === 'Others'
@@ -179,7 +179,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 							: '2px solid #FFFFFF90'
 					}
 					color={gender === 'Others' ? '#612D90' : 'white'}
-					fontFamily={'atoms_hwEN'}
+					fontFamily={'jaifu'}
 					fontSize={'1.2rem'}
 					onClick={() => {
 						setGender('Others');
@@ -196,8 +196,8 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 					borderRadius={'full'}
 					backgroundColor={
 						gender === 'None'
-							? '#FFFFFF00 !important'
-							: '#FFFFFF80 !important'
+							? '#9E88B450 !important'
+							: '#FFFFFF60 !important'
 					}
 					border={
 						gender === 'None'
@@ -205,7 +205,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 							: '2px solid #FFFFFF90'
 					}
 					color={gender === 'None' ? '#612D90' : 'white'}
-					fontFamily={'atoms_hwEN'}
+					fontFamily={'jaifu'}
 					fontSize={'1.2rem'}
 					onClick={() => {
 						setGender('None');
@@ -225,8 +225,10 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 				transition={'opacity 1s ease'}
 				color='#FFFFFF90'
 				onClick={handleNextPage}
+				fontFamily={'alata'}
+				fontSize={'1.3rem'}
 			>
-				<FaCheckCircle size={'100%'} />
+				tap to continue
 			</Box>
 		</Box>
 	);

@@ -87,10 +87,10 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 				pos={'absolute'}
 				top={
 					isShowInput
-						? windowH / 2 - windowH * 0.1
+						? windowH / 2 - windowH * 0.06
 						: windowH / 2 - windowH * 0.05
 				}
-				fontFamily={'atoms_hwEN'}
+				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
 				h={'50dvh'}
@@ -104,11 +104,11 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 				<Input
 					border={'2px solid #FFFFFF90'}
 					bg={'#FFFFFF50'}
-					h={'4dvh'}
 					color={'#612D90'}
+					h={'4dvh'}
 					borderRadius={'full'}
-					placeholder='Type your age'
-					fontFamily={'atoms_hwEN'}
+					placeholder='How can we call you ?'
+					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1rem'}
 					opacity={isShowInput ? 1 : 0}
@@ -120,7 +120,6 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 						},
 					}}
 					value={age}
-					type='number'
 					onChange={(e) => setAge(e.target.value)}
 				/>
 				<Box
@@ -140,17 +139,6 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 					<FaCheckCircle size={'2dvh'} color='white' />
 				</Box>
 			</Box>
-			{/* <Box
-				h={'5dvh'}
-				pos={'absolute'}
-				top={windowH * 0.8}
-				opacity={age === '' ? 0 : 1}
-				transition={'opacity 1s ease'}
-				color='#FFFFFF90'
-				onClick={handleNextPage}
-			>
-				<FaCheckCircle size={'100%'} />
-			</Box> */}
 		</Box>
 	);
 };

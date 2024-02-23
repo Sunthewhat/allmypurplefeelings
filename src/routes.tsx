@@ -6,6 +6,7 @@ import GenderPage from './pages/gender/genderPage';
 import AgePage from './pages/age/agePage';
 import ShadePage from './pages/shades/shadePage';
 import QuestionPage from './pages/question/questionPage';
+import ResultPage from './pages/result/resultPage';
 
 export type PageProps = {
 	windowH: number;
@@ -43,6 +44,10 @@ export const Routes = createBrowserRouter([
 			{
 				path: '/question',
 				element: <QuestionPage windowH={windowH} windowW={windowW} />,
+			},
+			{
+				path: '/result/:colorcode',
+				element: <ResultPage windowH={windowH} windowW={windowW} />,
 			},
 		],
 	},

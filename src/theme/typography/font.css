@@ -25,3 +25,31 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'jaifu';
+    src: url('jaifu.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sarabun';
+    src: url('Sarabun-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SarabunLight';
+    src: url('Sarabun-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gilda';
+    src: url('GildaDisplay-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
