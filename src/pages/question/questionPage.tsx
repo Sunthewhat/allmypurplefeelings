@@ -115,7 +115,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 										mb={2}
 										w={'100%'}
 										textAlign={'center'}
-										fontSize={['1rem', '1.5rem']}
+										fontSize={['0.9rem', '1.5rem']}
 										color={'#5A3F76'}
 										fontWeight={'semibold'}
 										display={'flex'}
