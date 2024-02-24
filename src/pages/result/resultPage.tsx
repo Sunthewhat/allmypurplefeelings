@@ -54,7 +54,7 @@ const ResultPage: FC<PageProps> = () => {
 				{result.colorcode === 'A18CC6' && (
 					<Box
 						pos={['static', 'absolute']}
-						top={['0', '10dvh']}
+						top={['0', '5dvh']}
 						display={'flex'}
 						flexDir={'column'}
 						justifyContent={'center'}
@@ -82,7 +82,7 @@ const ResultPage: FC<PageProps> = () => {
 				{result.colorcode !== 'A18CC6' && (
 					<Box
 						pos={['static', 'absolute']}
-						top={['0', '10dvh']}
+						top={['0', '5dvh']}
 						w={'100%'}
 						display={'flex'}
 						h={'10dvh'}
@@ -105,8 +105,8 @@ const ResultPage: FC<PageProps> = () => {
 					</Box>
 				)}
 				<Box
-					pos={['static', 'absolute']}
-					top={['0', '15dvh']}
+					pos={['relative', 'absolute']}
+					top={['-5dvh', '11dvh']}
 					fontFamily={'Gilda'}
 					fontSize={'3dvh'}
 					alignSelf={'center'}
@@ -129,7 +129,7 @@ const ResultPage: FC<PageProps> = () => {
 						flexDir={'column'}
 						justifyContent={'center'}
 						mt={[
-							'-7dvh',
+							'-12dvh',
 							window.innerWidth > window.innerHeight
 								? '-5dvh'
 								: '-7dvh',
@@ -169,7 +169,12 @@ const ResultPage: FC<PageProps> = () => {
 						/>
 					</Box>
 					<Box
-						mt={'-5dvh'}
+						mt={[
+							'-4dvh',
+							window.innerWidth > window.innerHeight
+								? '2dvh'
+								: '-4dvh',
+						]}
 						w={[
 							'100dvw',
 							window.innerWidth > window.innerHeight
