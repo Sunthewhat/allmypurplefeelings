@@ -161,11 +161,11 @@ const ResultPage: FC<PageProps> = () => {
 							left={[
 								'10%',
 								window.innerWidth > window.innerHeight
-									? '0'
+									? '7.5%'
 									: '25%',
 							]}
 							src={result.img}
-							width={['80%', '50%']}
+							width={['80%', '35%']}
 						/>
 					</Box>
 					<Box

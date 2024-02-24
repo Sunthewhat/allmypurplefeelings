@@ -69,7 +69,7 @@ const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 		>
 			<Image
 				objectFit={'contain'}
-				w={'70%'}
+				w={['70%', '25%']}
 				h={'20%'}
 				src={landokmai}
 				pos={'absolute'}
@@ -84,7 +84,10 @@ const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 					h={'35%'}
 					src={puppet}
 					pos={'absolute'}
-					top={windowH / 2 - windowH * 0.16}
+					top={[
+						windowH / 2 - windowH * 0.16,
+						windowH / 2 - windowH * 0.1,
+					]}
 					transition={'transform 3s ease'}
 					transform={moveUp ? 'scale(1)' : 'scale(0)'}
 					alt='puppet'
@@ -99,6 +102,7 @@ const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 				opacity={isShowGhosts ? 1 : 0}
 				transition={'opacity 2s ease'}
 				alt='ghosts'
+				width={['25%', '15%']}
 				css={{
 					animation: 'wobble1 5s infinite alternate',
 					'@keyframes wobble1': {
@@ -119,6 +123,7 @@ const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 				top={'60%'}
 				src={ghosts}
 				pos={'absolute'}
+				w={['25%', '15%']}
 				opacity={isShowGhosts ? 1 : 0}
 				transition={'opacity 2s ease'}
 				alt='ghosts'

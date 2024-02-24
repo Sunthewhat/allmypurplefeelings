@@ -149,12 +149,13 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 			</Box>
 			<Image
 				left={'4%'}
-				top={'58%'}
+				top={['58%', '40%']}
 				src={ghosts}
 				pos={'absolute'}
 				opacity={1}
 				w={'22%'}
 				transition={'opacity 2s ease'}
+				width={['25%', '15%']}
 				alt='ghosts'
 				css={{
 					animation: 'wobble1 5s infinite alternate',
@@ -173,12 +174,13 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 			/>
 			<Image
 				right={'5%'}
-				top={'62%'}
+				top={['62%', '35%']}
 				src={ghosts}
 				pos={'absolute'}
 				opacity={1}
 				w={'25%'}
 				transition={'opacity 2s ease'}
+				width={['25%', '15%']}
 				alt='ghosts'
 				css={{
 					animation: 'wobble2 7s infinite alternate',
@@ -209,17 +211,6 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 					fontFamily={'Alata'}
 					fontSize={'1.3rem'}
 					textAlign={'center'}
-					// css={{
-					// 	animation: 'breathing 1.5s infinite alternate',
-					// 	'@keyframes breathing': {
-					// 		'0%': {
-					// 			opacity: '0.8',
-					// 		},
-					// 		'100%': {
-					// 			opacity: '0.4',
-					// 		},
-					// 	},
-					// }}
 				>
 					Let's find
 					<br /> your shade!
