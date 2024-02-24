@@ -35,8 +35,12 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 
 	const handleNextQuestion = () => {
 		if (qIndex === 7) {
+			setTimeout(() => {}, 500);
 			const result = calculateResult(user);
-			sendResult(user, result);
+			setUser((dat) => {
+				sendResult(dat, result);
+				return dat;
+			});
 			navigate(`/result/${result.colorcode}`);
 		}
 		setQIndex(qIndex + 1);
