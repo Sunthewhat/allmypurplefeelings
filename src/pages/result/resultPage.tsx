@@ -4,11 +4,15 @@ import { FC, useEffect, useState } from 'react';
 import { FaSpotify, FaInstagram } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { results } from './data/result';
+import { playAudio } from '@/layout/playAudio';
 
 const ResultPage: FC<PageProps> = () => {
 	const { colorcode } = useParams();
 	const [isShowComponent, setIsShowComponent] = useState(false);
-	const result = results.find((dat) => dat.colorcode === colorcode);
+	const [isPlayed, setIsplayed] = useState(false);
+	const result = results.find((dat) => {
+		return dat.colorcode === colorcode;
+	});
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -26,6 +30,13 @@ const ResultPage: FC<PageProps> = () => {
 			h={'100dvh'}
 			opacity={isShowComponent ? 1 : 0}
 			transition={'opacity 2s ease'}
+			onClick={() => {
+				if (isPlayed) return;
+				setIsplayed(true);
+				results.find((dat, index) => {
+					if (dat.colorcode === colorcode) playAudio(index + 1);
+				});
+			}}
 		>
 			<Box
 				mt={[
@@ -42,6 +53,8 @@ const ResultPage: FC<PageProps> = () => {
 			>
 				{result.colorcode === 'A18CC6' && (
 					<Box
+						pos={['static', 'absolute']}
+						top={['0', '10dvh']}
 						display={'flex'}
 						flexDir={'column'}
 						justifyContent={'center'}
@@ -68,6 +81,8 @@ const ResultPage: FC<PageProps> = () => {
 				)}
 				{result.colorcode !== 'A18CC6' && (
 					<Box
+						pos={['static', 'absolute']}
+						top={['0', '10dvh']}
 						w={'100%'}
 						display={'flex'}
 						h={'10dvh'}
@@ -90,10 +105,12 @@ const ResultPage: FC<PageProps> = () => {
 					</Box>
 				)}
 				<Box
+					pos={['static', 'absolute']}
+					top={['0', '15dvh']}
 					fontFamily={'Gilda'}
 					fontSize={'3dvh'}
 					alignSelf={'center'}
-					mt={['-2dvh', '0.5dvh']}
+					mt={['2dvh', '0.5dvh']}
 				>
 					{result.colorcode}
 				</Box>
