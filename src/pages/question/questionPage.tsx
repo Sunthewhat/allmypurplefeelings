@@ -74,7 +74,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 				fontFamily={'Gilda display'}
 				color={'white'}
 			>
-				"All my purple feelings"
+				'All my purple feelings'
 			</Text>
 			<Box
 				opacity={isShowForm ? 1 : 0}

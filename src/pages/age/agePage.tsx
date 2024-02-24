@@ -106,7 +106,7 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 					color={'#612D90'}
 					h={'5dvh'}
 					borderRadius={'full'}
-					placeholder='Type your age ?'
+					placeholder='Type your age'
 					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1rem'}
