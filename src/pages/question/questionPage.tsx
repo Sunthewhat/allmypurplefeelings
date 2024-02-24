@@ -55,7 +55,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 			alignItems={'center'}
 		>
 			<Text
-				top={!isShowForm ? '45%' : '10%'}
+				top={!isShowForm ? '45%' : '7%'}
 				transition={'top 2s ease'}
 				pos={'absolute'}
 				fontFamily={'Gilda display'}
@@ -76,10 +76,11 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 				opacity={isShowForm ? 1 : 0}
 				transition={'opacity 4s ease'}
 				pos={'absolute'}
+				top={'15%'}
 				w={'80%'}
 				borderRadius={'10'}
-				h={'60%'}
-				bg={'#ffffff40'}
+				h={'65%'}
+				bg={'#ffffff70'}
 				display={'flex'}
 				justifyContent={'center'}
 				alignItems={'center'}
@@ -103,23 +104,27 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 								top={'5%'}
 								key={index}
 								mb={5}
-								w={'80%'}
+								w={'90%'}
 								textAlign={'center'}
-								fontSize={'1.2rem'}
+								fontSize={['1rem', '1.5rem']}
 								color={'#5A3F76'}
 								fontWeight={'semibold'}
+								display={'flex'}
+								justifyContent={'center'}
+								alignItems={'center'}
 							>
 								{question.question}
 							</Text>
 							<Box
+								zIndex={1}
 								display={'flex'}
 								flexDir={'column'}
-								gap={5}
 								justifyContent={'center'}
+								gap={3}
 								w={'100%'}
 								alignItems={'center'}
 								pos={'absolute'}
-								mt={'12dvh'}
+								top={'16dvh'}
 							>
 								{qIndex === index + 1 &&
 									question.displayAnswer.map(
@@ -133,14 +138,21 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 														)
 													}
 													key={index}
-													bgColor={'#5A3F7680'}
+													bgColor={
+														'#5A3F7680 !important'
+													}
 													color={'white'}
 													fontWeight={'regular'}
+													fontSize={[
+														'0.8rem',
+														'1.3rem',
+													]}
 													w={'80%'}
-													h={'6dvh'}
+													h={'7.5dvh'}
 													display={'flex'}
 													justifyContent={'center'}
 													flexDir={'column'}
+													lineHeight={1}
 												>
 													{answer.map(
 														(ans, index) => {
@@ -164,8 +176,8 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 				})}
 			</Box>
 			<Box
-				w={'90%'}
-				bottom={'15%'}
+				w={'80%'}
+				bottom={'13%'}
 				bg={'#ffffff30'}
 				pos={'absolute'}
 				h={windowH * 0.033}
@@ -175,7 +187,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 			>
 				<Box
 					h={'100%'}
-					bg={'#ffffff30'}
+					bg={'#ffffff60'}
 					borderRadius={'full'}
 					w={`${(qIndex / 7) * 100}%`}
 				/>

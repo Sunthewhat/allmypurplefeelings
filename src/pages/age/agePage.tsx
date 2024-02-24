@@ -85,34 +85,34 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 
 			<Text
 				pos={'absolute'}
-				top={
-					isShowInput
-						? windowH / 2 - windowH * 0.06
-						: windowH / 2 - windowH * 0.05
-				}
+				bottom={isShowInput ? '50dvh' : '46dvh'}
 				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
-				h={'50dvh'}
+				h={'8dvh'}
 				fontSize={'2rem'}
 				textAlign={'center'}
-				transition={'top 1s ease'}
+				transition={'bottom 1s ease'}
+				display={'flex'}
+				justifyContent={'center'}
+				alignItems={'center'}
 			>
 				How old are you ?
 			</Text>
-			<Box pos={'absolute'} top={windowH * 0.51} w={'60dvw'} h={'4dvh'}>
+			<Box pos={'absolute'} top={windowH * 0.51} w={'60dvw'} h={'5dvh'}>
 				<Input
 					border={'2px solid #FFFFFF90'}
 					bg={'#FFFFFF50'}
 					color={'#612D90'}
-					h={'4dvh'}
+					h={'5dvh'}
 					borderRadius={'full'}
-					placeholder='How can we call you ?'
+					placeholder='Type your age ?'
 					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1rem'}
 					opacity={isShowInput ? 1 : 0}
 					transition={'opacity 2s ease'}
+					type='number'
 					css={{
 						'&::placeholder': {
 							color: 'white',
@@ -120,7 +120,18 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 						},
 					}}
 					value={age}
-					onChange={(e) => setAge(e.target.value)}
+					onKeyDown={(e) => {
+						// Allow only numbers and backspace
+						if (
+							!/^\d$/.test(e.key) && // Check if it's not a digit
+							e.key !== 'Backspace' // Check if it's not the backspace key
+						) {
+							e.preventDefault(); // Prevent the default behavior
+						}
+					}}
+					onChange={(e) => {
+						setAge(e.target.value);
+					}}
 				/>
 				<Box
 					pos={'absolute'}
@@ -136,7 +147,7 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 					zIndex={1}
 					onClick={handleNextPage}
 				>
-					<FaCheckCircle size={'2dvh'} color='white' />
+					<FaCheckCircle size={'2.5dvh'} color='white' />
 				</Box>
 			</Box>
 		</Box>

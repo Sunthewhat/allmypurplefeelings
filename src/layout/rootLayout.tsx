@@ -35,6 +35,7 @@ export const RootLayout = () => {
 
 	useEffect(() => {
 		setPath(location.pathname);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
 	return (

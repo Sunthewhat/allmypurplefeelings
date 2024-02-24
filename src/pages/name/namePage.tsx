@@ -75,29 +75,28 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 
 			<Text
 				pos={'absolute'}
-				top={
-					isShowInput
-						? windowH / 2 - windowH * 0.14
-						: windowH / 2 - windowH * 0.06
-				}
+				bottom={isShowInput ? '50dvh' : '46.5dvh'}
 				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
-				h={'50dvh'}
+				h={'7dvh'}
 				fontSize={'2rem'}
 				textAlign={'center'}
-				transition={'top 1s ease'}
+				transition={'bottom 1s ease'}
 				lineHeight={'2rem'}
+				justifyContent={'center'}
+				display={'flex'}
+				alignItems={'center'}
 			>
 				What is <br />
 				your name ?
 			</Text>
-			<Box pos={'absolute'} top={windowH * 0.51} w={'60dvw'} h={'4dvh'}>
+			<Box pos={'absolute'} top={'55dvh'} w={'60dvw'} h={'5dvh'}>
 				<Input
 					border={'2px solid #FFFFFF90'}
 					bg={'#FFFFFF50'}
 					color={'#612D90'}
-					h={'4dvh'}
+					h={'5dvh'}
 					borderRadius={'full'}
 					placeholder='How can we call you ?'
 					fontFamily={'jaifu'}
@@ -128,7 +127,7 @@ const NamePage: FC<PageProps> = ({ windowH, windowW }) => {
 					zIndex={1}
 					onClick={handleNextPage}
 				>
-					<FaCheckCircle size={'2dvh'} color='white' />
+					<FaCheckCircle size={'2.5dvh'} color='white' />
 				</Box>
 			</Box>
 		</Box>

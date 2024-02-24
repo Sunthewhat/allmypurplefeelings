@@ -95,25 +95,25 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 				alt='puppet'
 				w={windowW * 0.3}
 				h={windowH * 0.3}
-				left={!isShowLandokmai ? '25%' : '35%'}
-				transition={'left 2s ease'}
+				right={!isShowLandokmai ? '48%' : '35%'}
+				transition={'right 2s ease'}
 			/>
 			<Box
 				pos={'absolute'}
-				top={'35%'}
+				top={'30%'}
 				w={windowW * 0.4}
-				h={windowH * 0.3}
+				h={windowH * 0.4}
 				display={'flex'}
 				justifyContent={'center'}
 				flexDir={'column'}
-				right={'10%'}
+				left={'43%'}
 				bg={'radial-gradient(circle, white -10%, #FFFFFF00 45%)'}
 				opacity={!isShowLandokmai && !isShowQuestion ? 1 : 0}
 				transition={'opacity 2s ease'}
 			>
 				<Text
 					color={'#5A3F76'}
-					fontFamily={'Atoms_hwEN'}
+					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1.5rem'}
 					lineHeight={'1.6rem'}
@@ -125,20 +125,20 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 			</Box>
 			<Box
 				pos={'absolute'}
-				top={'35%'}
+				top={'30%'}
 				w={windowW * 0.4}
-				h={windowH * 0.3}
+				h={windowH * 0.4}
 				display={'flex'}
 				justifyContent={'center'}
 				flexDir={'column'}
-				right={'10%'}
+				left={'43%'}
 				bg={'radial-gradient(circle, white -10%, #FFFFFF00 45%)'}
 				opacity={isShowQuestion ? 1 : 0}
 				transition={'opacity 4s ease'}
 			>
 				<Text
 					color={'#5A3F76'}
-					fontFamily={'Atoms_hwEN'}
+					fontFamily={'jaifu'}
 					textAlign={'center'}
 					fontSize={'1.5rem'}
 					lineHeight={'1.6rem'}
@@ -195,19 +195,36 @@ const ShadePage: FC<PageProps> = ({ windowH, windowW }) => {
 					},
 				}}
 			/>
-			<Text
-				pos={'absolute'}
-				color={'white'}
-				fontFamily={'Alata'}
-				fontSize={'1.3rem'}
-				textAlign={'center'}
-				bottom={'8%'}
+			<Box
+				w={'100%'}
+				display={'flex'}
+				justifyContent={'center'}
 				opacity={isShowToNextPage ? 0.5 : 0}
 				transition={'opacity 1s ease'}
+				pos={'absolute'}
+				bottom={'8%'}
 			>
-				Let's find
-				<br /> your shade!
-			</Text>
+				<Text
+					color={'white'}
+					fontFamily={'Alata'}
+					fontSize={'1.3rem'}
+					textAlign={'center'}
+					// css={{
+					// 	animation: 'breathing 1.5s infinite alternate',
+					// 	'@keyframes breathing': {
+					// 		'0%': {
+					// 			opacity: '0.8',
+					// 		},
+					// 		'100%': {
+					// 			opacity: '0.4',
+					// 		},
+					// 	},
+					// }}
+				>
+					Let's find
+					<br /> your shade!
+				</Text>
+			</Box>
 		</Box>
 	);
 };

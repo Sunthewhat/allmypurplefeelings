@@ -5,6 +5,7 @@ import puppet from '@/assets/puppet.svg';
 import ghosts from '@/assets/ghost.svg';
 import { useNavigate } from 'react-router-dom';
 import { PageProps } from '@/routes';
+import { playAudio } from '@/layout/playAudio';
 
 const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 	const navigate = useNavigate();
@@ -43,6 +44,7 @@ const HomePage: FC<PageProps> = ({ windowH, windowW }) => {
 	}, [isShowGhosts]);
 
 	const handleNextPage = () => {
+		playAudio(0);
 		if (!isCanGoToNextPage) {
 			return;
 		}

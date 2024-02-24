@@ -84,18 +84,14 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 
 			<Text
 				pos={'absolute'}
-				top={
-					isShowInput
-						? windowH / 2 - windowH * 0.14
-						: windowH / 2 - windowH * 0.06
-				}
+				bottom={isShowInput ? '60dvh' : '46dvh'}
 				fontFamily={'jaifu'}
 				color={'white'}
 				w={'100dvw'}
-				h={'50dvh'}
+				h={'8dvh'}
 				fontSize={'2rem'}
 				textAlign={'center'}
-				transition={'top 1s ease'}
+				transition={'bottom 1s ease'}
 				lineHeight={'2rem'}
 			>
 				What is <br />
@@ -106,7 +102,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 				display={'flex'}
 				flexDir={'column'}
 				alignItems={'center'}
-				top={windowH * 0.45}
+				top={'45dvh'}
 				w={'100dvw'}
 				opacity={isShowInput ? 1 : 0}
 				transition={'opacity 1s ease'}
@@ -220,7 +216,7 @@ const GenderPage: FC<PageProps> = ({ windowH, windowW }) => {
 			<Box
 				h={'5dvh'}
 				pos={'absolute'}
-				top={windowH * 0.8}
+				bottom={'6dvh'}
 				opacity={gender === '' ? 0 : 1}
 				transition={'opacity 1s ease'}
 				color='#FFFFFF90'

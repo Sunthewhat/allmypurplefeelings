@@ -1,3 +1,4 @@
+import { playAudio } from '@/layout/playAudio';
 import { UserType } from '@/layout/rootLayout';
 import { Result, results } from '@/pages/result/data/result';
 
@@ -152,7 +153,7 @@ export const calculateResult = (user: UserType) => {
 		}
 		cnt++;
 	});
-	// sendResult(user, results[max - 1]);
+	playAudio(max);
 	return results[max - 1];
 };
 
