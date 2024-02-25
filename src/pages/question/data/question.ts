@@ -153,6 +153,10 @@ export const calculateResult = (user: UserType) => {
 		}
 		cnt++;
 	});
+	if (cnt > mxcnt) {
+		mxcnt = cnt;
+		max = cur;
+	}
 	playAudio(max);
 	return results[max - 1];
 };
