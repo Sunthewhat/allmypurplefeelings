@@ -53,7 +53,7 @@ const ResultPage: FC<PageProps> = () => {
 			>
 				{result.colorcode === 'A18CC6' && (
 					<Box
-						pos={['static', 'absolute']}
+						pos={['relative', 'absolute']}
 						top={['0', '5dvh']}
 						display={'flex'}
 						flexDir={'column'}
@@ -61,6 +61,7 @@ const ResultPage: FC<PageProps> = () => {
 						w={'100%'}
 						alignItems={'center'}
 						gap={2}
+						mb={'3dvh'}
 					>
 						{result.thainame && (
 							<Text
@@ -73,7 +74,7 @@ const ResultPage: FC<PageProps> = () => {
 						<Text
 							fontFamily={'Gilda'}
 							fontSize={'3dvh'}
-							mt={'-0.2dvh'}
+							mt={'-0.5dvh'}
 						>
 							{result.engname}
 						</Text>
