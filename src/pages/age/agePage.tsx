@@ -2,7 +2,7 @@ import { UserContext } from '@/layout/rootLayout';
 import { PageProps } from '@/routes';
 import { Box, Input, Text } from '@chakra-ui/react';
 import { FC, useContext, useEffect, useState } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+// import { FaCheckCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
@@ -133,7 +133,7 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 						setAge(e.target.value);
 					}}
 				/>
-				<Box
+				{/* <Box
 					pos={'absolute'}
 					top={0}
 					h={'100%'}
@@ -148,7 +148,20 @@ const AgePage: FC<PageProps> = ({ windowH, windowW }) => {
 					onClick={handleNextPage}
 				>
 					<FaCheckCircle size={'2.5dvh'} color='white' />
-				</Box>
+				</Box> */}
+			</Box>
+			<Box
+				h={'5dvh'}
+				pos={'absolute'}
+				bottom={'6dvh'}
+				opacity={age === '' ? 0 : 1}
+				transition={'opacity 1s ease'}
+				color='#FFFFFF90'
+				onClick={handleNextPage}
+				fontFamily={'alata'}
+				fontSize={'1.3rem'}
+			>
+				tap to continue
 			</Box>
 		</Box>
 	);
