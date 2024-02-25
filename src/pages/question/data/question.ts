@@ -28,6 +28,7 @@ export const calculateResult = (user: UserType) => {
 			answers.push(5, 10);
 			break;
 	}
+
 	switch (user.q2) {
 		case '0':
 			answers.push(8, 9);
@@ -138,6 +139,7 @@ export const calculateResult = (user: UserType) => {
 	answers.sort((r1, r2) => {
 		return r1 - r2;
 	});
+
 	let max = 0;
 	let cur: number = 0;
 	let cnt = 0;

@@ -30,12 +30,12 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 		setUser((prev) => {
 			return { ...prev, [`q${question}`]: index + '' };
 		});
-		handleNextQuestion();
+		if (qIndex === 7) return;
+		setQIndex(qIndex + 1);
 	};
 
-	const handleNextQuestion = () => {
+	useEffect(() => {
 		if (qIndex === 7) {
-			setTimeout(() => {}, 500);
 			const result = calculateResult(user);
 			setUser((dat) => {
 				sendResult(dat, result);
@@ -43,8 +43,8 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 			});
 			navigate(`/result/${result.colorcode}`);
 		}
-		setQIndex(qIndex + 1);
-	};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [user.q7]);
 
 	return (
 		<Box
