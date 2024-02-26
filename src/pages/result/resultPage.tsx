@@ -1,18 +1,17 @@
 import { PageProps } from '@/routes';
 import { Box, Button, Grid, Image, Text } from '@chakra-ui/react';
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { FaSpotify, FaInstagram } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { results } from './data/result';
 import { playAudio } from '@/layout/playAudio';
 
 const ResultPage: FC<PageProps> = () => {
+	const shareRef = useRef();
 	const { colorcode } = useParams();
-	const [isShowComponent, setIsShowComponent] = useState(false);
 	const [isPlayed, setIsplayed] = useState(false);
-	const result = results.find((dat) => {
-		return dat.colorcode === colorcode;
-	});
+	const [isShowComponent, setIsShowComponent] = useState(false);
+	const result = results.find((dat) => dat.colorcode === colorcode);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -23,6 +22,7 @@ const ResultPage: FC<PageProps> = () => {
 
 	return (
 		<Box
+			ref={shareRef}
 			display={'flex'}
 			justifyContent={'center'}
 			pos={'fixed'}
@@ -247,6 +247,8 @@ const ResultPage: FC<PageProps> = () => {
 						h='20dvh'
 						display={'flex'}
 						flexDir={'column'}
+						justifyContent={'center'}
+						alignItems={'center'}
 					>
 						<Text
 							fontFamily={'Gilda'}
@@ -290,7 +292,8 @@ const ResultPage: FC<PageProps> = () => {
 								leftIcon={<FaSpotify size={'2.5dvh'} />}
 								onClick={() =>
 									window.open(
-										'https://open.spotify.com/artist/4k22J4XE3nfRlv4IH7D5Vt?si=NiT1ZtmlR--TeMaP25vL-A'
+										// 'https://open.spotify.com/artist/4k22J4XE3nfRlv4IH7D5Vt?si=NiT1ZtmlR--TeMaP25vL-A'
+										'https://open.spotify.com/album/697YQLmLHyLPeO73NGvVqs?si=mls02n1hTTWheVperOZiLA'
 									)
 								}
 							>

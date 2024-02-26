@@ -76,6 +76,19 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 			>
 				'All my purple feelings'
 			</Text>
+			{/* <Button
+				pos={'absolute'}
+				left={'5%'}
+				bottom={'5%'}
+				onClick={() =>
+					setQIndex((prev) => {
+						if (prev === 1) return prev;
+						return prev - 1;
+					})
+				}
+			>
+				Back
+			</Button> */}
 			<Box
 				opacity={isShowForm ? 1 : 0}
 				transition={'opacity 4s ease'}
@@ -108,23 +121,43 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 								top={'5%'}
 								w={'100%'}
 								textAlign={'center'}
+								display={'flex'}
+								flexDir={'column'}
 							>
-								{question.question.map((eachQ, index) => (
-									<Text
-										key={index}
-										mb={2}
-										w={'100%'}
-										textAlign={'center'}
-										fontSize={['0.9rem', '1.5rem']}
-										color={'#5A3F76'}
-										fontWeight={'semibold'}
-										display={'flex'}
-										justifyContent={'center'}
-										alignItems={'center'}
-									>
-										{eachQ}
-									</Text>
-								))}
+								{index === 5 &&
+									question.question.map((eachQ, index) => (
+										<Text
+											key={index}
+											mb={2}
+											w={'100%'}
+											textAlign={'center'}
+											fontSize={['0.9rem', '1.2rem']}
+											color={'#5A3F76'}
+											fontWeight={'semibold'}
+											display={'flex'}
+											justifyContent={'center'}
+											alignItems={'center'}
+										>
+											{eachQ}
+										</Text>
+									))}
+								{index !== 5 &&
+									question.question.map((eachQ, index) => (
+										<Text
+											key={index}
+											mb={2}
+											w={'100%'}
+											textAlign={'center'}
+											fontSize={['0.9rem', '1.5rem']}
+											color={'#5A3F76'}
+											fontWeight={'semibold'}
+											display={'flex'}
+											justifyContent={'center'}
+											alignItems={'center'}
+										>
+											{eachQ}
+										</Text>
+									))}
 							</Box>
 							<Box
 								zIndex={1}
@@ -162,7 +195,12 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 													h={'7.5dvh'}
 													display={'flex'}
 													justifyContent={'center'}
-													flexDir={'column'}
+													flexDir={
+														window.innerHeight >
+														window.innerWidth
+															? 'column'
+															: 'row'
+													}
 													lineHeight={1}
 												>
 													{answer.map(
