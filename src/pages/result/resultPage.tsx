@@ -5,10 +5,13 @@ import { FaSpotify, FaInstagram } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { results } from './data/result';
 import { playAudio } from '@/layout/playAudio';
+import { getImage } from './getImage';
+import { IoDownloadOutline } from 'react-icons/io5';
 
 const ResultPage: FC<PageProps> = () => {
 	const shareRef = useRef();
 	const { colorcode } = useParams();
+	// const frontendURL = import.meta.env.VITE_FRONTEND_URL;
 	const [isPlayed, setIsplayed] = useState(false);
 	const [isShowComponent, setIsShowComponent] = useState(false);
 	const result = results.find((dat) => dat.colorcode === colorcode);
@@ -19,6 +22,44 @@ const ResultPage: FC<PageProps> = () => {
 		}, 100);
 		return () => clearTimeout(timeout);
 	}, []);
+
+	// const handleSaveImage = async () => {
+	// 	const imageBlob = await fetch(
+	// 		frontendURL + '/saved/' + colorcode + '.png'
+	// 	)
+	// 		.then((response) => response.arrayBuffer())
+	// 		.then((buffer) => new Blob([buffer], { type: 'image/png' }));
+
+	// 	const link = document.createElement('a');
+	// 	link.href = URL.createObjectURL(imageBlob);
+	// 	link.download = colorcode + '.png';
+	// 	document.body.appendChild(link);
+	// 	link.click();
+	// 	document.body.removeChild(link);
+	// };
+
+	const handleShare = async () => {
+		const response = await fetch(getImage(colorcode));
+		const buffer = await response.arrayBuffer();
+		const imageBlob = new Blob([buffer], { type: 'image/png' });
+		// const imageFile = new File([imageBlob], colorcode + '.png');
+		const link = document.createElement('a');
+		link.href = URL.createObjectURL(imageBlob);
+		link.download = colorcode + '.png';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		// try {
+		// 	const shareData = {
+		// 		title: 'LANDOKMAI',
+		// 		text: 'Check out my color!',
+		// 		files: [imageFile],
+		// 	};
+		// 	await navigator.share(shareData);
+		// } catch (e) {
+		// 	console.error(e);
+		// }
+	};
 
 	return (
 		<Box
@@ -40,7 +81,7 @@ const ResultPage: FC<PageProps> = () => {
 		>
 			<Box
 				mt={[
-					'2dvh',
+					'0',
 					window.innerWidth > window.innerHeight ? '5dvh' : '0dvh',
 				]}
 				h={'80dvh'}
@@ -241,7 +282,26 @@ const ResultPage: FC<PageProps> = () => {
 					alignSelf={'center'}
 					bottom={'1dvh'}
 					pos={'absolute'}
+					display={'flex'}
+					flexDir={'column'}
+					justifyContent={'center'}
 				>
+					<Box
+						pos={'absolute'}
+						bottom={'17dvh'}
+						onClick={handleShare}
+						alignSelf={'center'}
+						// bgColor={'#7A4E6A40 !important'}
+						color={'#7A4E6A'}
+						h={'5dvh'}
+						w={'5dvh'}
+						borderRadius={'full'}
+						display={'flex'}
+						justifyContent={'center'}
+						alignItems={'center'}
+					>
+						<IoDownloadOutline size={'25px'} />
+					</Box>
 					<Box
 						w='100dvw'
 						h='20dvh'
@@ -264,7 +324,8 @@ const ResultPage: FC<PageProps> = () => {
 							display={'flex'}
 							flexDir={'row'}
 							justifyContent={'center'}
-							gap={8}
+							gap={5}
+							p={5}
 						>
 							<Button
 								w={'40%'}
