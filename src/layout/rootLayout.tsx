@@ -1,6 +1,6 @@
 import { Box, Image } from '@chakra-ui/react';
-import background from '@/assets/background1.svg';
-import resultBackground from '@/assets/background2_1.svg';
+import background from '@/assets/background1.png';
+import resultBackground from '@/assets/background2_1.png';
 import { Outlet, useLocation } from 'react-router-dom';
 import {
 	Dispatch,
