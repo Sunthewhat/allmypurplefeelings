@@ -42,9 +42,7 @@ export const RootLayout = () => {
 		<UserContext.Provider value={{ user, setUser }}>
 			<Box>
 				<Image
-					src={
-						path.includes('/result') ? resultBackground : background
-					}
+					src={background}
 					pos={'fixed'}
 					zIndex={-1}
 					loading='eager'
@@ -52,6 +50,20 @@ export const RootLayout = () => {
 					w={'100dvw'}
 					objectFit={'cover'}
 					alt='background'
+					opacity={path.includes('/result') ? 0 : 1}
+					transition={'opacity 1s ease'}
+				/>
+				<Image
+					src={resultBackground}
+					pos={'fixed'}
+					zIndex={-1}
+					loading='eager'
+					h={'100dvh'}
+					w={'100dvw'}
+					objectFit={'cover'}
+					alt='background'
+					opacity={path.includes('/result') ? 1 : 0}
+					transition={'opacity 1s ease'}
 				/>
 				<Outlet />
 			</Box>
