@@ -62,7 +62,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 			w={windowW}
 			h={windowH}
 			display={'flex'}
-			pos={'absolute'}
+			pos={'fixed'}
 			flexDir={'column'}
 			justifyContent={'center'}
 			alignItems={'center'}
