@@ -11,6 +11,7 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 	const [qIndex, setQIndex] = useState(1);
 	const navigate = useNavigate();
 	const { user, setUser } = useContext(UserContext);
+	const [isAllowAnswer, setIsAllowAnswer] = useState(false);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -26,7 +27,15 @@ const QuestionPage: FC<PageProps> = ({ windowH, windowW }) => {
 		return () => clearTimeout(timeout);
 	}, [isShowComponent]);
 
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			setIsAllowAnswer(true);
+		}, 4000);
+		return () => clearTimeout(timeout);
+	}, [isShowComponent]);
+
 	const handleButtonClik = (index: number, question: number) => {
+		if (!isAllowAnswer) return;
 		setUser((prev) => {
 			return { ...prev, [`q${question}`]: index + '' };
 		});
